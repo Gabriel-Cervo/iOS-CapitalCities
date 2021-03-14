@@ -29,6 +29,9 @@
                             <constraint firstAttribute="bottomMargin" secondItem="TbN-5v-w0E" secondAttribute="bottom" constant="-41" id="m8I-0U-B8C"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="TbN-5v-w0E" id="dAG-Zk-Q10"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

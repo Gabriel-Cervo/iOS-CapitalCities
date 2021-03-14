@@ -24,6 +24,31 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         mapView.addAnnotations([london, oslo, paris, rome, washington])
     }
+    
+    // Método chamado sempre que clicar em um pin para ver info
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        // Queremos mostrar info apenas das capitais
+        guard annotation is Capital else { return nil }
+        
+        let identifier = "Capital"
+        // Tenta dar dequeue de uma annotation view
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        if annotationView == nil {
+            // Se não achar uma annotationView reusavel,, cria uma nova
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            // Aparece o callout quando clicado em cima
+            annotationView?.canShowCallout = true
+            
+            // Botão de info
+            let detailBtn = UIButton(type: .detailDisclosure)
+            annotationView?.rightCalloutAccessoryView = detailBtn
+        } else {
+            // Se pode reusar a view, atualiza ela para usar a annotation diferente
+            annotationView?.annotation = annotation
+        }
+        
+        return annotationView
+    }
 
 
 }

@@ -49,6 +49,17 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         return annotationView
     }
+    
+    // Função chamada quando clicar no callouAccessory (nesse caso, o detailBtn acima)
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        guard let capital = view.annotation as? Capital else { return }
+        let placeName = capital.title
+        let placeInfo = capital.info
+        
+        let alertController = UIAlertController(title: placeName, message: placeInfo, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alertController, animated: true)
+    }
 
 
 }

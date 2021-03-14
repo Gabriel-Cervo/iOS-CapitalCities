@@ -32,7 +32,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         let identifier = "Capital"
         // Tenta dar dequeue de uma annotation view
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
         if annotationView == nil {
             // Se não achar uma annotationView reusavel,, cria uma nova
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
@@ -47,6 +47,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
             annotationView?.annotation = annotation
         }
         
+        annotationView?.tintColor = .blue // Cor do callout accessory
         return annotationView
     }
     
